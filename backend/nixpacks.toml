@@ -1,0 +1,5 @@
+[phases.setup]
+nixPkgs = ["php85", "php85Extensions.zip", "php85Extensions.sqlite3", "composer"]
+
+[variables]
+PHP_VERSION = "8.5"
