@@ -13,14 +13,16 @@ class TagController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'color' => 'required|string|max:50',
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'color' => 'required|string|max:30',
+    ]);
 
-        return response()->json(Tag::create($validated), 201);
-    }
+    $tag = Tag::create($validated);
+
+    return response()->json($tag, 201);
+}
 
     public function show(Tag $tag)
     {

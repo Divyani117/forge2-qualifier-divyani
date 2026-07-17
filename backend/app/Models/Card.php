@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Tag;
 
 class Card extends Model
 {
@@ -24,5 +25,10 @@ class Card extends Model
     public function member(): BelongsTo
     {
         return $this->belongsTo(Member::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 }

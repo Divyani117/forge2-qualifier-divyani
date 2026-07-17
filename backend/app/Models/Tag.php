@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Card;
 
 class Tag extends Model
 {
@@ -10,4 +11,9 @@ class Tag extends Model
         'name',
         'color'
     ];
+
+    public function cards()
+{
+    return $this->belongsToMany(Card::class)->withTimestamps();
+}
 }
