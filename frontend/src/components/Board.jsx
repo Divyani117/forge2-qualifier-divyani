@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../services/api";
+import List from "./List";
 
 function Board({ board }) {
   const [lists, setLists] = useState(board.task_lists || []);
@@ -16,31 +17,53 @@ function Board({ board }) {
         position: lists.length,
       });
 
-      setLists([...lists, response.data]);
+      setLists([
+        ...lists,
+        {
+          ...response.data,
+          cards: [],
+        },
+      ]);
     } catch (error) {
       console.error(error.response?.data || error);
       alert("Unable to create list.");
     }
   };
 
+  const updateListCards = (listId, updatedCards) => {
+    setLists((currentLists) =>
+      currentLists.map((list) =>
+        list.id === listId ? { ...list, cards: updatedCards } : list
+      )
+    );
+  };
+
   return (
-    <div className="board-card">
-      <h2>{board.name}</h2>
+    <section className="board-section">
+      <div className="board-header">
+        <div>
+          <h2>{board.name}</h2>
+          <p>{lists.length} lists</p>
+        </div>
 
-      <button onClick={createList}>+ Add List</button>
+        <button onClick={createList}>+ Add List</button>
+      </div>
 
-      <div style={{ marginTop: "15px" }}>
+      <div className="lists-container">
         {lists.length === 0 ? (
-          <p>No lists yet</p>
+          <p>No lists yet. Add To Do, Doing and Done.</p>
         ) : (
           lists.map((list) => (
-            <div key={list.id}>
-              📋 {list.name}
-            </div>
+            <List
+              key={list.id}
+              list={list}
+              cards={list.cards || []}
+              onCardsChange={(cards) => updateListCards(list.id, cards)}
+            />
           ))
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

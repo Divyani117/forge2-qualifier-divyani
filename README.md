@@ -1,44 +1,46 @@
-\# Forge 2 Qualifier – Kanban Board
+# Forge2 Kanban
 
+A Trello-style Kanban application built for the Forge2 Edition 2 Qualifier.
 
+## Tech Stack
 
-A tiny Trello-style Kanban application built using:
+- Laravel 13
+- React (Vite)
+- SQLite
+- REST API
 
+## Features
 
+- Create Boards
+- Create Lists
+- Create Cards
+- Edit Cards
+- Delete Cards
+- Move Cards between Lists
+- Assign Members
+- Add Tags
+- Due Dates
+- Overdue Card Highlighting
 
-\- Laravel REST API
+## Installation
 
-\- React with Vite
+### Backend
 
-\- SQLite
+```bash
+cd backend
+composer install
+php artisan migrate
+php artisan serve
+```
 
-\- Hermes as the planning agent
+### Frontend
 
-\- OpenClaw as the coding agent
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-\- Slack for the visible human-agent workflow
+## Author
 
-
-
-\## Project structure
-
-
-
-\- `backend/` – Laravel API
-
-\- `frontend/` – React interface
-
-\- `skills/` – Hermes reusable skills
-
-\- `slack-export/` – Slack workflow evidence
-
-\- `evidence/` – screenshots and walkthrough video
-
-
-
-\## Status
-
-
-
-Agent setup and Slack integration completed. Application development is starting.
-
+Divyani Singh
