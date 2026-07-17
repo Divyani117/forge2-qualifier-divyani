@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Tag;
+use Illuminate\Http\Request;
+
+class TagController extends Controller
+{
+    public function index()
+    {
+        return Tag::all();
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'color' => 'required|string|max:50',
+        ]);
+
+        return response()->json(Tag::create($validated), 201);
+    }
+
+    public function show(Tag $tag)
+    {
+        return $tag;
+    }
+
+    public function update(Request $request, Tag $tag)
+    {
+        $validated = $request->validate([
+            'name' => 'sometimes|required|string|max:255',
+            'color' => 'sometimes|required|string|max:50',
+        ]);
+
+        $tag->update($validated);
+
+        return $tag;
+    }
+
+    public function destroy(Tag $tag)
+    {
+        $tag->delete();
+
+        return response()->json([
+            'message' => 'Tag deleted successfully',
+        ]);
+    }
+}
