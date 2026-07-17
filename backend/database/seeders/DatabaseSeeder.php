@@ -2,24 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Member;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Tag::updateOrCreate(
+            ['name' => 'Bug'],
+            ['color' => '#ef4444']
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Tag::updateOrCreate(
+            ['name' => 'Design'],
+            ['color' => '#8b5cf6']
+        );
+
+        Tag::updateOrCreate(
+            ['name' => 'Feature'],
+            ['color' => '#22c55e']
+        );
+
+        Member::updateOrCreate(
+            ['email' => 'divyani@example.com'],
+            ['name' => 'Divyani']
+        );
     }
 }
