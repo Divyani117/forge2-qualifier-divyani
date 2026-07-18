@@ -1,34 +1,73 @@
-\---
+# Status Report Skill
 
-name: status-report
+## Purpose
 
-description: Post a What I Did / What's Left / What Needs Your Call update to Slack.
+Generate a clear and concise status report for the Forge2 Kanban project.
 
-\---
+---
 
+## When to Use
 
+Use this skill:
 
-When asked for a status update, gather:
+- after completing a feature
+- after fixing a bug
+- before deployment
+- before creating a final report
 
-\- tasks completed
+---
 
-\- tasks remaining
+## Inputs
 
-\- any decision needed from the human
+The skill receives:
 
+- Original task
+- Work completed
+- Files modified
+- Commands executed
+- Test results
+- Errors encountered
+- Next recommended step
 
+---
 
-Reply in exactly three sections:
+## Output Format
 
+```markdown
+## Status
 
+One sentence summary.
 
-\*\*What I Did\*\*
+## Completed
 
+- Item 1
+- Item 2
 
+## Files Changed
 
-\*\*What's Left\*\*
+- file/path
+- file/path
 
+## Verification
 
+- Test performed
+- Result observed
 
-\*\*What Needs Your Call\*\*
+## Blockers
 
+- None
+
+## Next Step
+
+One recommended next action.
+```
+
+---
+
+## Rules
+
+1. Report only completed work.
+2. Include failures and recovery steps.
+3. Never include passwords or API keys.
+4. Keep the report concise.
+5. Mention files that were modified.

@@ -1,0 +1,22 @@
+# Example Hermes configuration (sanitized)
+# Do not put real API keys or Slack tokens here.
+
+model:
+  provider: google_ai_studio
+  name: gemini-3.5-flash
+
+terminal:
+  backend: local
+  cwd: "."
+
+gateway:
+  enabled: true
+
+messaging:
+  slack:
+    enabled: true
+    socket_mode: true
+    bot_token: "${SLACK_BOT_TOKEN}"
+    app_token: "${SLACK_APP_TOKEN}"
+    allowed_user_ids: []
+    home_channel: ""
